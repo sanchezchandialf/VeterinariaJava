@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.List;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
     private static int idCounter = 0; // Contador estático para IDs incrementales
     private final int clientId; // Usar final para que no pueda modificarse después de la creación
     private List<Animal> animalData; // Cambiar a minúscula para seguir convenciones Java

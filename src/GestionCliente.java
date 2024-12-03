@@ -1,16 +1,22 @@
 
 
+import java.io.*;
 import java.util.*;
 
-public class GestionCliente {
+public class GestionCliente implements Serializable {
 
     private List<Cliente> clientes = new ArrayList<>();
     private List<Citas> citas= new ArrayList<>();
-    //CRUD
 
+
+
+
+
+    //CRUD
     //agregarCliente
     public void agregarCliente(Cliente cliente) {
         clientes.add(cliente);
+
     }
 
     //BuscarCliente
@@ -249,5 +255,54 @@ public class GestionCliente {
 
         agregarCita(cita);
     }
+
+
+    ////// SERIALIZACION
+
+
+
+    public void saveClientesToFile(String filePath) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            oos.writeObject(clientes);
+            System.out.println("Clientes guardados exitosamente en: " + filePath);
+        } catch (IOException e) {
+            System.err.println("Error al guardar clientes: " + e.getMessage());
+        }
+    }
+
+    // Method to deserialize the clientes list
+    @SuppressWarnings("unchecked")
+    public void loadClientesFromFile(String filePath) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            clientes = (List<Cliente>) ois.readObject();
+            System.out.println("Clientes cargados exitosamente desde: " + filePath);
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error al cargar clientes: " + e.getMessage());
+        }
+    }
+
+
+    public void saveCitasToFile(String filePath) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            oos.writeObject(citas);
+            System.out.println("Citas guardadas exitosamente en: " + filePath);
+        } catch (IOException e) {
+            System.err.println("Error al guardar citas: " + e.getMessage());
+        }
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public void loadCitasFromFile(String filePath) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            citas = (List<Citas>) ois.readObject();
+            System.out.println("Citas cargadas exitosamente desde: " + filePath);
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error al cargar citas: " + e.getMessage());
+        }
+    }
+
+
+
 
 }

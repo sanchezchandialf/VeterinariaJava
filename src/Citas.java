@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Date;
 
-public class Citas {
+public class Citas implements Serializable {
     public enum Estado {
         FINALIZADO, ACTIVO
     }

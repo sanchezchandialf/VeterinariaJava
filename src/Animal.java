@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Animal {
+public class Animal implements Serializable {
     private String name;
     private TypePet type;
     private String breed;
@@ -71,7 +72,7 @@ public class Animal {
     }
 }
 
-class MedicalHistory {
+class MedicalHistory implements  Serializable{
     private String medicalHistoryDetails;
     private VacPet[] vaccinations;
     private Treatment treatment;
@@ -131,7 +132,7 @@ class MedicalHistory {
     }
 }
 
-class DiagnosisDetails {
+class DiagnosisDetails implements  Serializable{
     private String diagnosis;
     private Date treatmentDate;
     private String diagnosisDate;

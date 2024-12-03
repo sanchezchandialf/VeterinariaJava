@@ -1,6 +1,8 @@
 import com.sun.source.doctree.VersionTree;
 
-public class Veterinario extends  Persona {
+import java.io.Serializable;
+
+public class Veterinario extends  Persona implements Serializable {
     private static int idCounter = 0; // Contador estático para IDs incrementales
     private int idVeterinario;
 
